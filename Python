@@ -1,0 +1,26 @@
+import random
+
+def jogar_forca():
+    palavra_secreta = random.choice(["gato", "cachorro", "elefante", "leão", "tigre", "zebra"])
+    corretas, incorretas, tentativas = set(), set(), 6
+
+    while tentativas > 0:
+        atual = ''.join(letra if letra in corretas else '_' for letra in palavra_secreta)
+        print("Palavra:", atual, "\nNúmero de letras:", len(palavra_secreta), "\nLetras incorretas:", ' '.join(incorretas))
+
+        if atual == palavra_secreta:
+            print("Parabéns! Você ganhou!")
+            return
+
+        palpite = input("Digite uma letra: ").lower()
+
+        if len(palpite) != 1 or not palpite.isalpha():
+            print("Por favor, digite apenas uma letra válida.")
+            continue
+        
+        (incorretas if palpite not in palavra_secreta else corretas).add(palpite)
+        tentativas -= palpite not in palavra_secreta
+
+    print("Você perdeu! A palavra era:", palavra_secreta)
+
+jogar_forca()
