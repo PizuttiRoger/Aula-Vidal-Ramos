@@ -1,7 +1,7 @@
 import random
 
 def jogar_forca():
-    palavra_secreta = random.choice(["gato", "cachorro", "elefante", "leão", "tigre", "zebra"])
+    palavra_secreta = random.choice(["palavra1", "palavra2"])
     corretas, incorretas, tentativas = set(), set(), 6
 
     while tentativas > 0:
